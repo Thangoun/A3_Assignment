@@ -1,0 +1,13 @@
+services:
+  dash:
+    platform: linux/amd64
+    command: python3 app/app.py  # Runs app.py inside the container
+    image: thang59/a3-assignment
+    build: 
+      context: ./  
+      dockerfile: dockerfile  # Use the Dockerfile in the current directory
+    environment:
+      - HOST=0.0.0.0  # Expose app to external network
+      - PORT=80
+    ports:
+      - 4000:80  # Map port 80 in the container to port 4000 on the host machine
